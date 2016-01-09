@@ -1,3 +1,4 @@
+https://travis-ci.org/diegodesouza/sample_app.svg?branch=master
 # Ruby on Rails Tutorial: sample application
 
 This is the sample application for the
