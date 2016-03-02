@@ -5,10 +5,11 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.activated_users.paginate(page: params[:page])
   end
 
   def show
+    redirect_to root_url && return unless @user.activated?
   end
 
   def new
