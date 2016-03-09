@@ -1,3 +1,5 @@
+puts "Creating user"
+
 User.create!(name: "Example User",
              email: "example@example.com",
              password: "password",
@@ -5,6 +7,9 @@ User.create!(name: "Example User",
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
+
+puts "Created example user"
+puts "Creating users"
 
 99.times do |n|
   name = Faker::Name.name
@@ -28,3 +33,14 @@ end
 
 puts "seeded #{Micropost.count} posts"
 
+puts "Creating relationships"
+
+# Following relationshiops
+users = User.all
+user = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
+
+puts "All done"
